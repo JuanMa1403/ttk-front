@@ -14,7 +14,7 @@ import {Subject, takeUntil} from 'rxjs';
 export class AdmisionComponent implements OnInit, AfterViewInit {
 
 
-    @ViewChild('matDrawer', {static: true}) matDrawer: MatDrawer;
+    @ViewChild('matDrawer', {static: false}) matDrawer: MatDrawer;
     drawerMode: 'side' | 'over';
 
     title: string;

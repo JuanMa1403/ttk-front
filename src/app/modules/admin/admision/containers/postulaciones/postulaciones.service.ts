@@ -25,7 +25,7 @@ export class PostulacionesService {
   }
 
   create(payload, user: User): Observable<any> {
-    payload.offerCreator = user.id;
+    
     return this._httpClient.post<any>(`${this.apiUrl}postulante/registrar`, payload);
   }
 

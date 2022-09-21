@@ -97,20 +97,20 @@
     max-height: 40px;
     line-height: 1 !important;
 
+    
+
+    .mat-button-focus-overlay,
+    .mat-button-ripple {
+        z-index: 1;
+    }
     .mat-button-wrapper {
         position: relative;
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
         height: 100%;
-        z-index: 2; /* Move mat-button-wrapper above the ripple and focus overlay */
+        z-index: auto; /* Move mat-button-wrapper above the ripple and focus overlay */
     }
-
-    .mat-button-focus-overlay,
-    .mat-button-ripple {
-        z-index: 1;
-    }
-
     /* Large button */
     &.fuse-mat-button-large {
         height: 48px;

@@ -31,7 +31,7 @@ export class OfertasService {
 
     create(payload, user: User): Observable<any> {
         payload.offerCreator = user.id;
-        return this._httpClient.put<any>(`${this.apiUrl}oferta/registrar`, payload);
+        return this._httpClient.put<any>(`${this.apiUrl}oferta/registrar/`, payload);
     }
 
     update(payload): Observable<any> {
