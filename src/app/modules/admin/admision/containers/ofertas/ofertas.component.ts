@@ -35,7 +35,7 @@ export class OfertasComponent implements OnInit, AfterViewInit, OnDestroy {
         private _offerService: OfertasService,
         private _admisionService: AdmisionService,
     ) {
-        this._admisionService.title.next('Ofertas');
+        this._admisionService.title.next('Ofertas Laborales');
     }
 
     ngOnInit(): void {
@@ -67,7 +67,6 @@ export class OfertasComponent implements OnInit, AfterViewInit, OnDestroy {
                 this._ngxSpinner.hide();
                 this.count = response.count;
                 this.dataSource = response.content;
-                //console.log(this.dataSource);
             });
     }
 

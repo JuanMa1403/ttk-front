@@ -33,7 +33,7 @@ export class ExamenMedicoComponent implements OnInit, AfterViewInit, OnDestroy {
       private _postulacionService: PostulacionesService,
       private _admisionService: AdmisionService,
   ) {
-    this._admisionService.title.next('Examen medico');
+    this._admisionService.title.next('Examen Médico');
   }
 
   ngOnInit(): void {

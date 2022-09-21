@@ -32,8 +32,8 @@ export class OfferFiltersComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
+        this._commonService.getStatus().subscribe(estado => (this.status = estado));
         this.employees$ = this._userService.getAll({ paginated: false });
-        this.estados();
     }
 
     ngAfterViewInit(): void {
@@ -65,10 +65,6 @@ export class OfferFiltersComponent implements OnInit, AfterViewInit {
     ngOnDestroy(): void {
         this.unsubscribe.next();
         this.unsubscribe.complete();
-    }
-
-    estados(): void {
-        this._commonService.getStatus().subscribe(estado => (this.status = estado));
     }
 
 }
