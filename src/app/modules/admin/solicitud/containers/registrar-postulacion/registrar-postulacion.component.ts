@@ -101,12 +101,22 @@ export class RegistrarPostulacionComponent implements OnInit {
     createRequest(): void {
         if (this.formActions.valid) {
             this._ngxSpinnerService.show();
-            const payload = this.formActions.getRawValue();
-            payload.fechaNacimiento = payload.fechaNacimiento ? moment(payload.fechaNacimiento).format('YYYY-MM-DD') : null;
-            payload.fechaIngresoTrabajoReciente = payload.fechaIngresoTrabajoReciente ? moment(payload.fechaIngresoTrabajoReciente).format('YYYY-MM-DD') : null;
-            payload.fechaSalidaTrabajoReciente = payload.fechaSalidaTrabajoReciente ? moment(payload.fechaSalidaTrabajoReciente).format('YYYY-MM-DD') : null;
-            this.createTransaction(payload);
-            console.log(payload);
+            //const payload = this.formActions.getRawValue();
+            const payload = this.formActions.value;
+
+            const formData = new FormData();
+
+            formData.append('fechaNacimiento', payload.fechaNacimiento ? moment(payload.fechaNacimiento).format('YYYY-MM-DD') : null);
+            formData.append('fechaIngresoTrabajoReciente', payload.fechaIngresoTrabajoReciente ? moment(payload.fechaIngresoTrabajoReciente).format('YYYY-MM-DD') : null);
+            formData.append('fechaSalidaTrabajoReciente', payload.fechaSalidaTrabajoReciente ? moment(payload.fechaSalidaTrabajoReciente).format('YYYY-MM-DD') : null);
+
+
+            //payload.fechaNacimiento = payload.fechaNacimiento ? moment(payload.fechaNacimiento).format('YYYY-MM-DD') : null;
+            //payload.fechaIngresoTrabajoReciente = payload.fechaIngresoTrabajoReciente ? moment(payload.fechaIngresoTrabajoReciente).format('YYYY-MM-DD') : null;
+            //payload.fechaSalidaTrabajoReciente = payload.fechaSalidaTrabajoReciente ? moment(payload.fechaSalidaTrabajoReciente).format('YYYY-MM-DD') : null;
+
+            this.createTransaction(formData);
+            //console.log(payload);
         } else {
             this.formActions.markAllAsTouched();
         }
