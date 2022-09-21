@@ -21,9 +21,7 @@ import {MAT_SELECT_SCROLL_STRATEGY} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { ComponenteComponent } from './src/app/mantenimiento/componente/componente.component';
-import { MantenimientoComponent } from './mantenimiento/mantenimiento/mantenimiento.component';
-import { ComponentsComponent } from './mantenimiento/components/components.component';
+
 
 
 const routerConfig: ExtraOptions = {
@@ -39,9 +37,7 @@ export function scrollFactory(overlay: Overlay): () => BlockScrollStrategy {
     declarations: [
         AppComponent,
         EmpresaComponent,
-        ComponenteComponent,
-        MantenimientoComponent,
-        ComponentsComponent,
+
         
     ],
     imports: [
