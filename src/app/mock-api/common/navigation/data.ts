@@ -79,6 +79,13 @@ export const defaultItemsNavigations: FuseNavigationItem[] = [
                 icon: 'heroicons_outline:chart-pie',
                 link: '#',
             },
+            {
+                id: 'mantenimiento',
+                title: 'Mantenimiento',
+                type: 'basic',
+                icon: 'heroicons_outline:chart-pie',
+                link: '/mantenimiento',
+            },
         ]
     }
 ];
