@@ -16,11 +16,6 @@ export class SolicitudService {
   ) { }
 
   registerRequest(payload): Observable<any> {
-
-    //payload.curriculum = { id: 1 };
-    //payload.postulante = { payload };
-    console.log(payload);
-
     return this._httpClient.post<any>(`${this.apiUrl}postulante/registrar/`, payload);
   }
 }
