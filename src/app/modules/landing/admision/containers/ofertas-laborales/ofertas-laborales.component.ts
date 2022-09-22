@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {OfertasService} from '../../../../admin/admision/containers/ofertas/ofertas.service';
-import {Observable} from 'rxjs';
-import {FormControl, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { OfertasService } from '../../../../admin/admision/containers/ofertas/ofertas.service';
+import { Observable } from 'rxjs';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-ofertas-laborales',
@@ -22,9 +22,9 @@ export class OfertasLaboralesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this._offerService.getAvailableOffers({paginated: true})
+        this._offerService.getAvailableOffers({ paginated: true })
             .subscribe(results => {
-                //console.log(results);
+                console.log(results.content);
                 this.availableOffers = results.content;
             });
     }
@@ -35,8 +35,7 @@ export class OfertasLaboralesComponent implements OnInit {
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 

@@ -73,18 +73,20 @@ export const defaultItemsNavigations: FuseNavigationItem[] = [
                 link: '/recursos-humanos/personal',
             },
             {
-                id: 'cargo',
-                title: 'Cargo',
-                type: 'basic',
-                icon: 'heroicons_outline:chart-pie',
-                link: '#',
-            },
-            {
                 id: 'mantenimiento',
                 title: 'Mantenimiento',
-                type: 'basic',
+                type: 'collapsable',
                 icon: 'heroicons_outline:chart-pie',
-                link: '/mantenimiento',
+                //link: '/recursos-humanos/admision',
+                children: [
+                    {
+                        id: 'registrarAdmin',
+                        title: 'Registrar Admin',
+                        type: 'basic',
+                        icon: 'heroicons_outline:chart-pie',
+                        link: '/mantenimiento',
+                    },
+                ]
             },
         ]
     }

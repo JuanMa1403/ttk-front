@@ -3,6 +3,7 @@
 
     <div class="flex flex-col gap-2">
       <h1 class="text-primary-500 title-solicitud">Datos Personales</h1>
+      <input type="text" name="" id="" value="idOfertas">
       <div class="flex flex-row gap-2">
         <mat-form-field class="w-full" appearance="fill">
           <mat-label>Primer nombre</mat-label>
@@ -227,26 +228,27 @@
       <div class="flex flex-row gap-2">
         <mat-form-field class="w-full">
           <mat-label>Curriculum vitae</mat-label>
-          <ngx-mat-file-input formControlName="curriculum" placeholder="Curriculum vitae">
+          <ngx-mat-file-input formControlName="curriculum" placeholder="Curriculum vitae" (change)="uploadCV($event)">
           </ngx-mat-file-input>
           <mat-icon matSuffix>folder</mat-icon>
           <mat-error *ngIf="formActions.get('curriculum').hasError('required')"> Este campo es requerido </mat-error>
         </mat-form-field>
         <mat-form-field class="w-full">
           <mat-label>D.N.I. - Frontal</mat-label>
-          <ngx-mat-file-input formControlName="dniFrontal" placeholder="DNI FONTRAL">
+          <ngx-mat-file-input formControlName="dniFrontal" placeholder="DNI FONTRAL" (change)="uploadDNI1($event)">
           </ngx-mat-file-input>
           <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
         <mat-form-field class="w-full">
           <mat-label>D.N.I. - Posterior</mat-label>
-          <ngx-mat-file-input formControlName="dniPosterior" placeholder="DNI POSTERIOR">
+          <ngx-mat-file-input formControlName="dniPosterior" placeholder="DNI POSTERIOR" (change)="uploadDNI2($event)">
           </ngx-mat-file-input>
           <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
         <mat-form-field class="w-full">
           <mat-label>Fotografia</mat-label>
-          <ngx-mat-file-input formControlName="foto" placeholder="Fotografia"></ngx-mat-file-input>
+          <ngx-mat-file-input formControlName="foto" placeholder="Fotografia" (change)="uploadFOTO($event)">
+          </ngx-mat-file-input>
           <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
       </div>

@@ -32,6 +32,8 @@ export class RegistrarPostulacionComponent implements OnInit {
 
     unsubscribe = new Subject<void>();
 
+    formData = new FormData();
+
     constructor(
         private _fb: UntypedFormBuilder,
         private _ngxSpinnerService: NgxSpinnerService,
@@ -56,7 +58,6 @@ export class RegistrarPostulacionComponent implements OnInit {
 
     createFormActions(): void {
         this.formActions = this._fb.group({
-            id: [null],
             // Datos Personales
             primerNombre: [null, [Validators.required]],
             segundoNombre: [null],
@@ -93,9 +94,34 @@ export class RegistrarPostulacionComponent implements OnInit {
             foto: [null],
             // Opciones
             disponibilidadViajar: [null, [Validators.required]],
-            experienciaRubro: [null, [Validators.required]],
-
+            experienciaRubro: [null, [Validators.required]]
         });
+    }
+
+    uploadCV(event): any {
+        const cv = event.target.files[0];
+        this.formData.append('curriculum', cv);
+    }
+
+    uploadDNI1(event): any {
+        const img1 = event.target.files[0];
+        const dni1 = new Blob([img1], { type: 'multipart/form-data' });
+        this.formData.append('dniFrontal', dni1);
+        console.log(img1);
+    }
+
+    uploadDNI2(event): any {
+        const img2 = event.target.files[0];
+        const dni2 = new Blob([img2], { type: 'multipart/form-data' });
+        this.formData.append('dniPosterior', dni2);
+        console.log(img2);
+    }
+
+    uploadFOTO(event): any {
+        const img3 = event.target.files[0];
+        const foto = new Blob([img3], { type: 'multipart/form-data' });
+        this.formData.append('foto', foto);
+        console.log(img3);
     }
 
     createRequest(): void {
@@ -104,18 +130,57 @@ export class RegistrarPostulacionComponent implements OnInit {
             //const payload = this.formActions.getRawValue();
             const payload = this.formActions.value;
 
-            const formData = new FormData();
+            this.formData.append('primerNombre', payload.primerNombre);
+            this.formData.append('segundoNombre', payload.segundoNombre);
+            this.formData.append('apellidoPaterno', payload.apellidoPaterno);
+            this.formData.append('apellidoMaterno', payload.apellidoMaterno);
+            this.formData.append('dni', payload.dni);
+            this.formData.append('idEstadoCivil', payload.idEstadoCivil);
+            this.formData.append('fechaNacimiento', payload.fechaNacimiento);
+            this.formData.append('direccion', payload.direccion);
+            this.formData.append('idDepartamento', payload.idDepartamento);
+            this.formData.append('idProvincia', payload.idProvincia);
+            this.formData.append('idDistrito', payload.idDistrito);
+            this.formData.append('telefonoFijo', payload.telefonoFijo);
+            this.formData.append('celular', payload.celular);
+            this.formData.append('celularFamiliar', payload.celularFamiliar);
+            this.formData.append('email', payload.email);
+            this.formData.append('emailSecundario', payload.emailSecundario);
+            this.formData.append('profesion', payload.profesion);
+            this.formData.append('lugarEstudios', payload.lugarEstudios);
+            this.formData.append('ultimoCursoRealizado', payload.ultimoCursoRealizado);
+            this.formData.append('empresaCurso', payload.empresaCurso);
+            this.formData.append('trabajoReciente', payload.trabajoReciente);
+            this.formData.append('fechaIngresoTrabajoReciente', payload.fechaIngresoTrabajoReciente);
+            this.formData.append('fechaSalidaTrabajoReciente', payload.fechaSalidaTrabajoReciente);
+            this.formData.append('empresaTrabajoReciente', payload.empresaTrabajoReciente);
+            this.formData.append('motivoSalidaTrabajoReciente', payload.motivoSalidaTrabajoReciente);
+            this.formData.append('fechaPostulacion', payload.fechaNacimiento); //** */
 
-            formData.append('fechaNacimiento', payload.fechaNacimiento ? moment(payload.fechaNacimiento).format('YYYY-MM-DD') : null);
-            formData.append('fechaIngresoTrabajoReciente', payload.fechaIngresoTrabajoReciente ? moment(payload.fechaIngresoTrabajoReciente).format('YYYY-MM-DD') : null);
-            formData.append('fechaSalidaTrabajoReciente', payload.fechaSalidaTrabajoReciente ? moment(payload.fechaSalidaTrabajoReciente).format('YYYY-MM-DD') : null);
+            /*const cv = new Blob([payload.curriculum], { type: 'multipart/form-data' });
+            const dni1 = new Blob([payload.dniFrontal], { type: 'multipart/form-data' });
+            const dni2 = new Blob([payload.dniPosterior], { type: 'multipart/form-data' });
+            const foto = new Blob([payload.foto], { type: 'multipart/form-data' });
 
+            //this.formData.set('curriculum', payload.curriculum);
+            this.formData.set('dniFrontal', dni1);
+            this.formData.set('dniPosterior', dni2);
+            this.formData.set('foto', foto);*/
 
-            //payload.fechaNacimiento = payload.fechaNacimiento ? moment(payload.fechaNacimiento).format('YYYY-MM-DD') : null;
-            //payload.fechaIngresoTrabajoReciente = payload.fechaIngresoTrabajoReciente ? moment(payload.fechaIngresoTrabajoReciente).format('YYYY-MM-DD') : null;
-            //payload.fechaSalidaTrabajoReciente = payload.fechaSalidaTrabajoReciente ? moment(payload.fechaSalidaTrabajoReciente).format('YYYY-MM-DD') : null;
+            this.formData.append('disponibilidadViajar', payload.disponibilidadViajar);
+            this.formData.append('experienciaRubro', payload.experienciaRubro);
 
-            this.createTransaction(formData);
+            this.formData.append('estado', '1'); /** */
+            this.formData.append('estadoPostulacion', '1'); /** */
+            this.formData.append('idOferta', '1');
+            this.formData.append('ofertaPostulada', '1');
+            this.formData.append('procedencia', 'procencia');
+            this.formData.append('urlCurriculumVitae', 'ruta de archivos');
+            this.formData.append('urlDniFrontal', 'ruta de archivos');
+            this.formData.append('urlDniPosterior', 'ruta de archivos');
+            this.formData.append('urlFotografia', 'ruta de archivos');
+
+            this.createTransaction(this.formData);
             //console.log(payload);
         } else {
             this.formActions.markAllAsTouched();
