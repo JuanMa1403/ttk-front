@@ -37,7 +37,6 @@
                 </mat-form-field>
             </div>
 
-
             <ng-container *ngIf="availableOffers.length; else notResults">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 sm:mt-10">
 
@@ -74,7 +73,7 @@
 
                                 <!-- Course launch button -->
                                 <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
-                                    <button (click)="goLogin()" mat-stroked-button>
+                                    <button (click)="goLogin(offer?.id, offer?.titulo)" mat-stroked-button>
                                         <span class="inline-flex items-center">
                                             <span>Postular</span>
                                             <mat-icon class="ml-1.5 icon-size-5"
@@ -85,8 +84,8 @@
                                     <button (click)="cancel()" mat-stroked-button>
                                         <span class="inline-flex items-center">
                                             <span>Salir</span>
-                                            <mat-icon class="ml-1.5 icon-size-5"
-                                                [svgIcon]="'heroicons_solid:ban'"></mat-icon>
+                                            <mat-icon class="ml-1.5 icon-size-5" [svgIcon]="'heroicons_solid:ban'">
+                                            </mat-icon>
                                         </span>
                                     </button>
                                 </div>

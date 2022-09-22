@@ -76,7 +76,6 @@ export class AuthSignUpComponent implements OnInit {
         this.showAlert = false;
 
         // FORMDATA
-
         const form = this.signUpForm.value;
         const foto = new Blob([form?.foto], { type: 'multipart/form-data' });
 
@@ -95,10 +94,25 @@ export class AuthSignUpComponent implements OnInit {
         this._authService.signUp(formData)
             .subscribe(
                 (response) => {
-                    //console.log(response);
 
-                    // Navigate to the confirmation required page
-                    this._router.navigateByUrl('/iniciar-sesion');
+                    // Re-enable the form
+                    this.signUpForm.enable();
+
+                    // Reset the form
+                    this.signUpNgForm.resetForm();
+
+                    // Set the alert
+                    this.alert = {
+                        type: 'error',
+                        message: response.mensaje
+                    };
+
+                    if (response.mensaje == 'Usuario registrado correctamente') {
+                        this._router.navigateByUrl('/iniciar-sesion'); // Navigate to the confirmation required page
+                    } else {
+                        this.showAlert = true; // Show the alert
+                    }
+
                 },
                 (response) => {
 
@@ -111,7 +125,7 @@ export class AuthSignUpComponent implements OnInit {
                     // Set the alert
                     this.alert = {
                         type: 'error',
-                        message: 'Error al intentar crear el usuario, por favor intentelo nuevamente'
+                        message: 'Error al intentar crear el usuario, comuniquese con el administrador'
                     };
 
                     // Show the alert

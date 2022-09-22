@@ -7,6 +7,7 @@ import { CommonService } from '../../../../../shared/services/common.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import moment from 'moment';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { OfertasLaboralesComponent } from 'app/modules/landing/admision/containers/ofertas-laborales/ofertas-laborales.component';
 
 @Component({
     selector: 'app-registrar-postulacion',
@@ -19,6 +20,9 @@ export class RegistrarPostulacionComponent implements OnInit {
     civilStatus$: Observable<AbstractChoice[]>;
     departamento: Departamento[] = [];
     //provincia: Provincia[];
+
+    //idOfertas: string = '';
+    //tituloOferta: string = '';
 
     provincia: Provincia[] = [
         { id: 1, name: "Lima Provincia" },
@@ -40,6 +44,7 @@ export class RegistrarPostulacionComponent implements OnInit {
         private _requestService: SolicitudService,
         private _commonService: CommonService,
         private _snackService: MatSnackBar,
+        //private _ofertaLaboral: OfertasLaboralesComponent
     ) {
         this.createFormActions();
     }
@@ -48,6 +53,8 @@ export class RegistrarPostulacionComponent implements OnInit {
         this.civilStatus$ = this._commonService.getCivilStatus({ paginated: false });
         this._commonService.getDepartamento().subscribe(departament => { this.departamento = departament; });
         //this._commonService.getProvincia().subscribe(provincia => { this.provincia = provincia; });
+
+        //console.log(this._ofertaLaboral.idofertas)
 
         this._requestService.eventCreate
             .pipe(takeUntil(this.unsubscribe))
@@ -157,16 +164,6 @@ export class RegistrarPostulacionComponent implements OnInit {
             this.formData.append('motivoSalidaTrabajoReciente', payload.motivoSalidaTrabajoReciente);
             this.formData.append('fechaPostulacion', payload.fechaNacimiento); //** */
 
-            /*const cv = new Blob([payload.curriculum], { type: 'multipart/form-data' });
-            const dni1 = new Blob([payload.dniFrontal], { type: 'multipart/form-data' });
-            const dni2 = new Blob([payload.dniPosterior], { type: 'multipart/form-data' });
-            const foto = new Blob([payload.foto], { type: 'multipart/form-data' });
-
-            //this.formData.set('curriculum', payload.curriculum);
-            this.formData.set('dniFrontal', dni1);
-            this.formData.set('dniPosterior', dni2);
-            this.formData.set('foto', foto);*/
-
             this.formData.append('disponibilidadViajar', payload.disponibilidadViajar);
             this.formData.append('experienciaRubro', payload.experienciaRubro);
 
@@ -181,7 +178,6 @@ export class RegistrarPostulacionComponent implements OnInit {
             this.formData.append('urlFotografia', 'ruta de archivos');
 
             this.createTransaction(this.formData);
-            //console.log(payload);
         } else {
             this.formActions.markAllAsTouched();
         }

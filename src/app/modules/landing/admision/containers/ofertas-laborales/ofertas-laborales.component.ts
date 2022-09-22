@@ -15,6 +15,8 @@ export class OfertasLaboralesComponent implements OnInit {
 
     availableOffers = [];
 
+    idofertas: string;
+
     constructor(
         private _router: Router,
         private _offerService: OfertasService,
@@ -27,6 +29,7 @@ export class OfertasLaboralesComponent implements OnInit {
                 console.log(results.content);
                 this.availableOffers = results.content;
             });
+
     }
 
     /**
@@ -39,8 +42,11 @@ export class OfertasLaboralesComponent implements OnInit {
         return item.id || index;
     }
 
-    goLogin(): void {
-        this._router.navigateByUrl('solicitud/registrar-solicitud');
+    goLogin(id, titulo): void {
+        //console.log(id + ' ' + titulo);
+        this.idofertas = id;
+        //console.log(this.idofertas);
+        this._router.navigateByUrl('registro');
     }
 
     cancel(): void {

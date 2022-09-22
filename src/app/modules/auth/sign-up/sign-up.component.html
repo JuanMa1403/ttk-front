@@ -8,12 +8,14 @@
             </div>
 
             <!-- Title -->
-            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Registrarse</div>
-            <div class="flex items-baseline mt-0.5 font-medium">
+            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight text-align:center">Registrate</div>
+
+            <div class="mt-8 text-1xl tracking-tight leading-tight">Por favor ingrese sus datos obtener una cuenta en TECHNOTANKERS</div>
+            <!-- <div class="flex items-baseline mt-0.5 font-medium">
                 <div>¿Ya cuentas con un usuario?</div>
                 <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/iniciar-sesion']">Iniciar sesión
                 </a>
-            </div>
+            </div> -->
 
             <!-- Alert -->
             <fuse-alert class="mt-8 -mb-4" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false"
@@ -22,7 +24,8 @@
             </fuse-alert>
 
             <!-- Sign Up form -->
-            <form class="mt-8" enctype="multipart/form-data" (ngSubmit)="signUp()" [formGroup]="signUpForm" #signUpNgForm="ngForm">
+            <form class="mt-8" enctype="multipart/form-data" (ngSubmit)="signUp()" [formGroup]="signUpForm"
+                #signUpNgForm="ngForm">
 
                 <!-- Name field -->
                 <mat-form-field class="w-full">
