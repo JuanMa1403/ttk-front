@@ -21,6 +21,7 @@ import {MAT_SELECT_SCROLL_STRATEGY} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CreateAdminComponent } from './modules/admin/registrar-admin/components/create-admin/create-admin.component';
 
 
 
@@ -37,8 +38,7 @@ export function scrollFactory(overlay: Overlay): () => BlockScrollStrategy {
     declarations: [
         AppComponent,
         EmpresaComponent,
-
-        
+        CreateAdminComponent,
     ],
     imports: [
         BrowserModule,

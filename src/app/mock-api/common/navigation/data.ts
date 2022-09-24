@@ -65,26 +65,27 @@ export const defaultItemsNavigations: FuseNavigationItem[] = [
                     },
                 ]
             },
+
             {
-                id: 'personal',
-                title: 'Personal',
-                type: 'basic',
-                icon: 'heroicons_outline:chart-pie',
-                link: '/recursos-humanos/personal',
-            },
-            {
-                id: 'mantenimiento',
-                title: 'Mantenimiento',
+                id: 'personas',
+                title: 'Personas',
                 type: 'collapsable',
                 icon: 'heroicons_outline:chart-pie',
                 //link: '/recursos-humanos/admision',
                 children: [
                     {
                         id: 'registrarAdmin',
-                        title: 'Registrar Admin',
+                        title: 'Administrador',
                         type: 'basic',
                         icon: 'heroicons_outline:chart-pie',
-                        link: '/mantenimiento',
+                        link: '/administrador',
+                    },
+                    {
+                        id: 'personal',
+                        title: 'Personal',
+                        type: 'basic',
+                        icon: 'heroicons_outline:chart-pie',
+                        link: '/recursos-humanos/personal',
                     },
                 ]
             },

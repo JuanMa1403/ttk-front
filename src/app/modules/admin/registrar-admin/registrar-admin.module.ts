@@ -11,21 +11,25 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { Route, RouterModule } from "@angular/router";
 import { MaterialFileInputModule } from "ngx-material-file-input";
-import { MantenimientoComponent } from "./mantenimiento.component";
+import { registraradminComponent } from "./registrar-admin.component";
+import { MatTableModule } from "@angular/material/table";
+import { MatMenuModule } from "@angular/material/menu";
+import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
-const mantenimientoRoutes: Route[] = [
+const Routes: Route[] = [
     {
         path     : '',
-        component: MantenimientoComponent
+        component: registraradminComponent
     }
 ];
 
 @NgModule({
     declarations: [
-        MantenimientoComponent
+        registraradminComponent
     ],
     imports     : [
-        RouterModule.forChild(mantenimientoRoutes),
+        RouterModule.forChild(Routes),
         MatSidenavModule,
         MatCardModule,
         MatFormFieldModule,
@@ -36,9 +40,13 @@ const mantenimientoRoutes: Route[] = [
         MaterialFileInputModule,
         MatIconModule,
         MatRadioModule,
-        MatButtonModule
+        MatButtonModule,
+        MatTableModule,
+        MatMenuModule,
+        CommonModule,
+        MatPaginatorModule
     ]
 })
-export class MantenimientoModule
+export class registraradminmodule
 {
 }

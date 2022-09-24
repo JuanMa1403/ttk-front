@@ -53,3 +53,11 @@ export interface AbstractChoice {
     id: number;
     name: string;
 }
+
+export interface Usuarios {
+    id: number;
+    nombre: string;
+    apellidos: string;
+    nombreUsuario: string;
+    email: string;
+}
